@@ -24,7 +24,7 @@ jobs:
         run: node --check index.js
 
       - name: Run index.js
-        shell: bach
+        shell: bash
         run: |
           set -euo pipefail
 
