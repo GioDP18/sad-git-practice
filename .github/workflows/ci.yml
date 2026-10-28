@@ -3,7 +3,7 @@ name: JavaScript CI
 on:
   push:
 
-permission:
+permissions:
   contents: read
 
 jobs:
