@@ -1,0 +1,35 @@
+name: JavaScript CI
+
+on:
+  push:
+
+permission:
+  contents: read
+
+jobs:
+  validate-javascript:
+    name: Validate index.js
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+      - uses: action/checkout@v4
+
+      - name: Set up Node.js
+        uses: action/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check javaScript Syntax
+        run: node --check index.js
+
+      - name: Run index.js
+        shell: bach
+        run: |
+          set -euo pipefail
+
+          test -f index.js
+          output="$(node index.js)"
+          test "$output" = "Juan Secret De la Cruz"
+
+          echo "index.js passed CI validation."
